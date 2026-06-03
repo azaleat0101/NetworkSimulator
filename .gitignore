@@ -1,0 +1,18 @@
+# Папка сборки
+build/
+
+# Сгенерированные отчёты
+report.csv
+report.txt
+test_output.json
+roundtrip.json
+*.o
+
+# Файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+.DS_Store

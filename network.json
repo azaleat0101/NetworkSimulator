@@ -1,0 +1,47 @@
+{
+  "network": {
+    "nodes": [
+      {
+        "type": "host",
+        "id": "Host1",
+        "mac": "AA:BB:CC:DD:01",
+        "ip": "192.168.1.10"
+      },
+      {
+        "type": "host",
+        "id": "Host2",
+        "mac": "AA:BB:CC:DD:02",
+        "ip": "192.168.1.20"
+      },
+      {
+        "type": "host",
+        "id": "Host3",
+        "mac": "AA:BB:CC:DD:03",
+        "ip": "192.168.2.10"
+      },
+      {
+        "type": "router",
+        "id": "Router1",
+        "mac": "AA:BB:CC:DD:FF",
+        "ip": "192.168.1.1",
+        "routes": "192.168.1.0,255.255.255.0,192.168.1.1,eth0;192.168.2.0,255.255.255.0,192.168.2.1,eth1"
+      },
+      {
+        "type": "hub",
+        "id": "Hub1",
+        "mac": "AA:BB:CC:DD:EE",
+        "ip": "192.168.1.250"
+      }
+    ],
+    "links": [
+      {
+        "type": "link",
+        "id": "Ethernet1",
+        "bandwidth": 10,
+        "length": 100,
+        "linkType": "shared_bus",
+        "nodes": "Host1,Host2,Host3,Router1,Hub1"
+      }
+    ]
+  }
+}
