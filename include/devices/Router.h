@@ -2,6 +2,9 @@
 #include "devices/Node.h"
 #include <vector>
 #include <string>
+#include <memory>
+
+class Packet;
 
 struct RoutingEntry {
     std::string destinationNetwork;
@@ -16,6 +19,9 @@ public:
 
     void sendPacket(const std::string& dstIP, const std::string& data) override;
     void receivePacket(const std::string& srcIP, const std::string& data) override;
+
+    // Real packet routing
+    void routeRealPacket(std::shared_ptr<Packet> packet);
 
     void addRoute(const RoutingEntry& entry);
     void printRoutingTable() const;
