@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(SOURCES
-    src/main.cpp
     src/core/SimulationEngine.cpp
     src/devices/Node.cpp
     src/devices/Host.cpp
@@ -27,8 +26,8 @@ set(SOURCES
 add_library(NetworkSimulatorLib STATIC ${SOURCES})
 target_include_directories(NetworkSimulatorLib PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
-add_executable(netsim src/main.cpp)
-target_link_libraries(netsim PRIVATE NetworkSimulatorLib)
+add_executable(NetworkSimulator src/main.cpp)
+target_link_libraries(NetworkSimulator PRIVATE NetworkSimulatorLib)
 
 enable_testing()
 add_subdirectory(tests)

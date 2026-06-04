@@ -27,18 +27,36 @@ add_executable(runUnitTests ${UNIT_TESTS})
 target_link_libraries(runUnitTests PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
 target_include_directories(runUnitTests PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-# Сценарий 1: передача между хостами
-add_executable(scenario1 scenario1.cpp)
-target_link_libraries(scenario1 PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
-target_include_directories(scenario1 PRIVATE ${CMAKE_SOURCE_DIR}/include)
+# Сценарий CSMA/CD коллизия
+add_executable(scenario_csma_collision scenarios/scenario_csma_collision.cpp)
+target_link_libraries(scenario_csma_collision PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
+target_include_directories(scenario_csma_collision PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-# Сценарий 2: работа с конфигурацией
-add_executable(scenario2 scenario2.cpp)
-target_link_libraries(scenario2 PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
-target_include_directories(scenario2 PRIVATE ${CMAKE_SOURCE_DIR}/include)
+# Сценарий IP маршрутизация
+add_executable(scenario_ip_routing scenarios/scenario_ip_routing.cpp)
+target_link_libraries(scenario_ip_routing PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
+target_include_directories(scenario_ip_routing PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+# Сценарий Сохранение и загрузка
+add_executable(scenario_save_load scenarios/scenario_save_load.cpp)
+target_link_libraries(scenario_save_load PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
+target_include_directories(scenario_save_load PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+# Сценарий Статистика
+add_executable(scenario_statistics scenarios/scenario_statistics.cpp)
+target_link_libraries(scenario_statistics PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
+target_include_directories(scenario_statistics PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+# Сценарий Headless режина 200 узлов
+add_executable(scenario_headless_200 scenarios/scenario_headless_200.cpp)
+target_link_libraries(scenario_headless_200 PRIVATE Catch2::Catch2WithMain NetworkSimulatorLib)
+target_include_directories(scenario_headless_200 PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 # Регистрируем тесты для CTest
 include(Catch)
 catch_discover_tests(runUnitTests)
-catch_discover_tests(scenario1)
-catch_discover_tests(scenario2)
+catch_discover_tests(scenario_csma_collision)
+catch_discover_tests(scenario_ip_routing)
+catch_discover_tests(scenario_save_load)
+catch_discover_tests(scenario_statistics)
+catch_discover_tests(scenario_headless_200)
